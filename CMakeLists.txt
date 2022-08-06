@@ -20,8 +20,8 @@ set(TARGET_ROOT_DIR ${PROJECT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE})
 set(TARGET_BIN_DIR ${TARGET_ROOT_DIR}/bin)
 set(TARGET_LIB_DIR ${TARGET_ROOT_DIR}/lib)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${TARGET_BIN_DIR}-${CMAKE_GENERATOR_PLATFORM})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${TARGET_LIB_DIR}-${CMAKE_GENERATOR_PLATFORM})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${TARGET_BIN_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${TARGET_LIB_DIR})
 
 add_subdirectory(Engine)
 add_subdirectory(WorkSpace)
@@ -29,5 +29,13 @@ add_subdirectory(WorkSpace)
 target_precompile_headers(
         Engine PRIVATE
         <iostream>
+        <memory>
         <vector>
-        <unordered_map>)
+        <string>
+        <sstream>
+        <array>
+        <set>
+        <unordered_map>
+        <map>
+        <functional>
+        "Engine/Engine/Log.hpp")

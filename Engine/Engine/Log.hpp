@@ -2,7 +2,7 @@
 #define ENGINE_ENGINE_ENGINE_LOG_H_
 
 #include "spdlog/spdlog.h"
-#include <memory>
+#include "spdlog/fmt/ostr.h"
 
 namespace Engine
 {

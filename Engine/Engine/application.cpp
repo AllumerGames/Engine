@@ -1,9 +1,14 @@
 #include "application.hpp"
 
+#include "Events/ApplicationEvent.hpp"
+
+#include <GLFW/glfw3.h>
+
 namespace Engine
 {
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<IWindow>(IWindow::Create());
 	}
 
 	Application::~Application()
@@ -12,15 +17,11 @@ namespace Engine
 
 	void Application::Run()
 	{
-		std::cout << "Hello World" << std::endl;
-		std::vector<int> testVector;
-		testVector.push_back(10);
-		testVector.push_back(11);
-		testVector.push_back(13);
-
-		for (const auto& item : testVector)
+		while(m_Running)
 		{
-			std::cout << item << std::endl;
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
 	}
 
