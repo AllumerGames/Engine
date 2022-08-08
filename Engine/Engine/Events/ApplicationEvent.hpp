@@ -1,10 +1,11 @@
 #ifndef ENGINE_ENGINE_ENGINE_EVENTS_APPLICATIONEVENT_H_
 #define ENGINE_ENGINE_ENGINE_EVENTS_APPLICATIONEVENT_H_
 
+#include <sstream>
 #include "Event.hpp"
 
 namespace Engine {
-	class WindowResizeEvent : public Event
+	class WindowResizeEvent : public IEvent
 	{
 	 public:
 		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height) {}
@@ -26,11 +27,14 @@ namespace Engine {
 			return ss.str();
 		}
 
+		EVENT_CLASS_TYPE(WindowResize)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+
 	 private:
 		unsigned int m_Width, m_Height;
 	};
 
-	struct WindowCloseEvent : public Event
+	struct WindowCloseEvent : public IEvent
 	{
 		WindowCloseEvent() {}
 
@@ -38,7 +42,7 @@ namespace Engine {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	struct AppTickEvent : public Event
+	struct AppTickEvent : public IEvent
 	{
 		AppTickEvent() {}
 
@@ -46,7 +50,7 @@ namespace Engine {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	struct AppUpdateEvent : public Event
+	struct AppUpdateEvent : public IEvent
 	{
 		AppUpdateEvent() {}
 
@@ -54,7 +58,7 @@ namespace Engine {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	struct AppRenderEvent : public Event
+	struct AppRenderEvent : public IEvent
 	{
 		AppRenderEvent() {}
 

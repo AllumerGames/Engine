@@ -25,9 +25,11 @@ namespace Engine
 	class IWindow
 	{
 	 public:
-		using EventCallbackFn = std::function<void(Event&)>;
+		using EventCallbackFn = std::function<void(IEvent&)>;
 
-		virtual ~IWindow() {}
+		virtual ~IWindow()
+		{
+		}
 
 		virtual void OnUpdate() = 0;
 

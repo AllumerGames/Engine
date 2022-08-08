@@ -1,7 +1,8 @@
 #ifndef ENGINE_ENGINE_ENGINE_EVENTS_EVENT_H_
 #define ENGINE_ENGINE_ENGINE_EVENTS_EVENT_H_
 
-namespace Engine {
+namespace Engine
+{
 
 	enum class EventType
 	{
@@ -16,28 +17,33 @@ namespace Engine {
 	{
 #define BIT(x) (1 << (x))
 		None = 0,
-		EventCategoryApplication    = BIT(0),
-		EventCategoryInput          = BIT(1),
-		EventCategoryKeyboard       = BIT(2),
-		EventCategoryMouse          = BIT(3),
-		EventCategoryMouseButton    = BIT(4)
+		EventCategoryApplication = BIT(0),
+		EventCategoryInput = BIT(1),
+		EventCategoryKeyboard = BIT(2),
+		EventCategoryMouse = BIT(3),
+		EventCategoryMouseButton = BIT(4)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
-								virtual EventType GetEventType() const override { return GetStaticType(); }\
-								virtual const char* GetName() const override { return #type; }
+                                virtual EventType GetEventType() const override { return GetStaticType(); }\
+                                virtual const char* GetName() const override { return #type; }
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class Event
+	class IEvent
 	{
 		friend class EventDispatcher;
 	 public:
-		Event() : m_Handled(false){}
+		IEvent() : m_Handled(false)
+		{
+		}
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
-		virtual std::string ToString() const { return GetName(); }
+		virtual std::string ToString() const
+		{
+			return GetName();
+		}
 
 		inline bool IsInCategory(EventCategory category)
 		{
@@ -47,7 +53,7 @@ namespace Engine {
 		bool m_Handled;
 	};
 
-	inline std::ostream& operator<<(std::ostream& os, const Event& e)
+	inline std::ostream& operator<<(std::ostream& os, const IEvent& e)
 	{
 		return os << e.ToString();
 	}
@@ -57,12 +63,14 @@ namespace Engine {
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	 public:
-		EventDispatcher(Event& event) : m_Event(event) {}
+		EventDispatcher(IEvent& event) : m_Event(event)
+		{
+		}
 
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if(m_Event.GetEventType() == T::GetStatic)
+			if (m_Event.GetEventType() == T::GetStaticType())
 			{
 				m_Event.m_Handled = func(*(T*)&m_Event);
 				return true;
@@ -72,10 +80,8 @@ namespace Engine {
 		}
 
 	 private:
-		Event& m_Event;
+		IEvent& m_Event;
 	};
-
-
 
 }
 

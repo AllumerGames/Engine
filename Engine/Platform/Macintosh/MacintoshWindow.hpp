@@ -2,6 +2,7 @@
 #define ENGINE_ENGINE_PLATFORM_MACINTOSH_MACINTOSHWINDOW_H_
 
 #include "../../Engine/Window.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Engine{
