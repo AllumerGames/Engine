@@ -12,6 +12,7 @@ set( GLFW_INSTALL OFF CACHE BOOL  "GLFW lib only" )
 #set( GLFW_INSTALL OFF CACHE BOOL  "GLFW lib only" )
 
 add_subdirectory(External/glfw)
+add_subdirectory(External/glad)
 
 #add_library(glfw STATIC IMPORTED)
 #set_target_properties(glfw PROPERTIES
@@ -52,4 +53,4 @@ target_include_directories(Engine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
                                   PRIVATE External/glfw/include)
 #target_link_directories(Engine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../build/RelWithDebInfo/Engine/External/GLFW/src/)
 
-target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLFW_LIBRARIES} glfw)
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLFW_LIBRARIES} glfw glad)
