@@ -4,11 +4,14 @@
 #include <sstream>
 #include "Event.hpp"
 
-namespace Engine {
+namespace Engine
+{
 	class WindowResizeEvent : public IEvent
 	{
 	 public:
-		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height) {}
+		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height)
+		{
+		}
 
 		inline unsigned int GetWidth() const
 		{
@@ -36,7 +39,9 @@ namespace Engine {
 
 	struct WindowCloseEvent : public IEvent
 	{
-		WindowCloseEvent() {}
+		WindowCloseEvent()
+		{
+		}
 
 		EVENT_CLASS_TYPE(WindowClose)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
@@ -44,7 +49,9 @@ namespace Engine {
 
 	struct AppTickEvent : public IEvent
 	{
-		AppTickEvent() {}
+		AppTickEvent()
+		{
+		}
 
 		EVENT_CLASS_TYPE(AppTick)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
@@ -52,7 +59,9 @@ namespace Engine {
 
 	struct AppUpdateEvent : public IEvent
 	{
-		AppUpdateEvent() {}
+		AppUpdateEvent()
+		{
+		}
 
 		EVENT_CLASS_TYPE(AppUpdate)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
@@ -60,12 +69,13 @@ namespace Engine {
 
 	struct AppRenderEvent : public IEvent
 	{
-		AppRenderEvent() {}
+		AppRenderEvent()
+		{
+		}
 
 		EVENT_CLASS_TYPE(AppRender)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-
 
 }
 

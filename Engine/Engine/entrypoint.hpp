@@ -8,7 +8,6 @@ int main(int argc, char** argv)
 	int a = 5;
 	ENGINE_INFO("Hello! Var={0}", a);
 
-
 	auto app = Engine::CreateApplication();
 	app->Run();
 	delete app;
