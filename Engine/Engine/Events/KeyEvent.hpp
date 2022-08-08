@@ -5,7 +5,7 @@
 
 namespace Engine{
 
-	class KeyEvent : public Event
+	class KeyEvent : public IEvent
 	{
 	 public:
 		inline int GetKeyCode() const { return m_KeyCode; }

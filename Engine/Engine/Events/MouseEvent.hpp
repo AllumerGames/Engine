@@ -5,10 +5,10 @@
 
 namespace Engine {
 
-	class MouseMoveEvent : public Event
+	class MouseMovedEvent : public IEvent
 	{
 	 public:
-		MouseMoveEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
+		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
 
 		inline float GetX() const { return m_MouseX; }
 		inline float GetY() const { return m_MouseY; }
@@ -26,7 +26,7 @@ namespace Engine {
 		float m_MouseX, m_MouseY;
 	};
 
-	class MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public IEvent
 	{
 	 public:
 		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
@@ -47,7 +47,7 @@ namespace Engine {
 			float m_XOffset, m_YOffset;
 	};
 
-	class MouseButtonEvent : public Event
+	class MouseButtonEvent : public IEvent
 	{
 	 public:
 		inline int GetMouseButton() const { return m_Button; }
