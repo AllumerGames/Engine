@@ -34,6 +34,7 @@ namespace Engine
 	{
 		friend class EventDispatcher;
 	 public:
+		bool m_Handled;
 		IEvent() : m_Handled(false)
 		{
 		}
@@ -49,8 +50,6 @@ namespace Engine
 		{
 			return GetCategoryFlags() & category;
 		}
-	 protected:
-		bool m_Handled;
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const IEvent& e)

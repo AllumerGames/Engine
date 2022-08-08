@@ -36,8 +36,15 @@ add_library(Engine STATIC
 
         Engine/Window.h
 
+        Engine/Layer.cpp
+        Engine/Layer.hpp
+        Engine/LayerStack.cpp
+        Engine/LayerStack.hpp
+
         Platform/Macintosh/MacintoshWindow.cpp
         Platform/Macintosh/MacintoshWindow.hpp
+
+
         )
 
 
