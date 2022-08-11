@@ -5,6 +5,8 @@
 #include "Layer.hpp"
 #include "Engine/application.hpp"
 
+#include "Engine/ImGui/ImGuiLayer.hpp"
+
 // entry point should be declared last
 #include "Engine/entrypoint.hpp"
 

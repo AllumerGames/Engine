@@ -1,11 +1,11 @@
 project(WorkSpace)
 
 include_directories(../Engine/Engine
-#                     ../Engine/Engine/Events
-                    ../Engine/Platform
-                    ../Engine/External/spdlog/include
+        #                     ../Engine/Engine/Events
+        ../Engine/Platform
+        ../Engine/External/spdlog/include
         ../Engine/External/glfw/include
-                    )
+        )
 
 #add_subdirectory( ../Engine/External/glfw)
 

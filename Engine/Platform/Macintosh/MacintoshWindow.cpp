@@ -5,7 +5,6 @@
 #include "KeyEvent.hpp"
 
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 namespace Engine
 {
@@ -62,6 +61,9 @@ namespace Engine
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
+		//these are required to set appropriate glsl version.
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);

@@ -16,6 +16,7 @@ set(ENABLE_DEVELOPER_MODE TRUE CACHE BOOL "Enable 'developer mode'")
 
 set(OPT_WARNINGS_AS_ERRORS_DEVELOPER_DEFAULT TRUE)
 
+
 set(TARGET_ROOT_DIR ${PROJECT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE})
 set(TARGET_BIN_DIR ${TARGET_ROOT_DIR}/bin)
 set(TARGET_LIB_DIR ${TARGET_ROOT_DIR}/lib)
@@ -38,4 +39,5 @@ target_precompile_headers(
         <unordered_map>
         <map>
         <functional>
-        "Engine/Engine/Log.hpp")
+        "Engine/Engine/Log.hpp"
+      )
