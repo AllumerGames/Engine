@@ -5,6 +5,7 @@ include_directories(../Engine/Engine
         ../Engine/Platform
         ../Engine/External/spdlog/include
         ../Engine/External/glfw/include
+        ../Engine/External/imgui
         )
 
 #add_subdirectory( ../Engine/External/glfw)

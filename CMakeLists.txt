@@ -32,8 +32,8 @@ target_precompile_headers(
         <iostream>
         <memory>
         <vector>
-        <string>
         <sstream>
+        <string>
         <array>
         <set>
         <unordered_map>

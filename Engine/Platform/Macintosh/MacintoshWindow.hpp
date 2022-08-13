@@ -1,12 +1,12 @@
 #ifndef ENGINE_ENGINE_PLATFORM_MACINTOSH_MACINTOSHWINDOW_H_
 #define ENGINE_ENGINE_PLATFORM_MACINTOSH_MACINTOSHWINDOW_H_
 
-#include "../../Engine/Window.h"
+#include "../../Engine/Window.hpp"
+
+#include "Renderer/GraphicsContexts.hpp"
+
 #include <GLFW/glfw3.h>
 
-struct GLFWwindow {
-
-};
 
 namespace Engine
 {
@@ -35,7 +35,7 @@ namespace Engine
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-		inline virtual void* GetNativeWindow() const
+		inline virtual void* GetNativeWindow() const override
 		{
 			return m_Window;
 		}
@@ -54,6 +54,7 @@ namespace Engine
 			EventCallbackFn EventCallback;
 		};
 		GLFWwindow* m_Window;
+		IGraphicsContext* m_Context;
 		WindowData m_Data;
 
 	};

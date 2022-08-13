@@ -1,5 +1,7 @@
 #include <Engine.hpp>
 
+#include "imgui.h"
+
 class ExampleLayer : public Engine::Layer
 {
  public:
@@ -10,12 +12,28 @@ class ExampleLayer : public Engine::Layer
 
 	void OnUpdate() override
 	{
-		ENGINE_INFO("ExampleLayer::Update");
+		if(Engine::Input::IsKeyPressed(ENGINE_KEY_TAB))
+		{
+			ENGINE_TRACE("Tab key is pressed !");
+		}
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Engine::IEvent& event) override
 	{
-		ENGINE_TRACE("{0}", event);
+//		if(event.GetEventType() == Engine::EventType::KeyPressed)
+//		{
+//			Engine::KeyPressedEvent& e = (Engine::KeyPressedEvent&) event;
+//			if(e.GetKeyCode() == ENGINE_KEY_TAB)
+//				ENGINE_TRACE("Tab Key is pressed (event)!");
+//			ENGINE_TRACE("{0}",(char)e.GetKeyCode());
+//		}
 	}
 
 };

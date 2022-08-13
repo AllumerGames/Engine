@@ -1,10 +1,13 @@
 #find_package(spdlog REQUIRED)
 include_directories(
         External/spdlog/include
-        Engine/Events
-        Engine/ImGui
+#        Engine/Events
+#        Engine/ImGui
+#        Engine/Renderer
+        Engine
         External/imgui
         External/glfw/include
+        External/glm
         Platform
         Platform/OpenGL)
 find_package(OpenGL REQUIRED)
@@ -16,6 +19,7 @@ set(GLFW_INSTALL OFF CACHE BOOL "GLFW lib only")
 
 add_subdirectory(External/glfw)
 add_subdirectory(External/glad)
+add_subdirectory(External/glm)
 
 
 add_library(imgui
@@ -55,7 +59,7 @@ add_library(Engine STATIC
         Engine/Events/KeyEvent.hpp
         Engine/Events/MouseEvent.hpp
 
-        Engine/Window.h
+        Engine/Window.hpp
 
         Engine/Layer.cpp
         Engine/Layer.hpp
@@ -68,17 +72,17 @@ add_library(Engine STATIC
         Platform/Macintosh/MacintoshWindow.cpp
         Platform/Macintosh/MacintoshWindow.hpp
 
-        Platform/OpenGL/imgui_impl_glfw.h
-        Platform/OpenGL/imgui_impl_glfw.cpp
-
-        Platform/OpenGL/imgui_impl_opengl3.cpp
-        Platform/OpenGL/imgui_impl_opengl3.h
-
-        Engine/ImGui/ImGuiBuild.cpp Engine/Input.hpp Engine/KeyCodes.hpp Engine/MouseButtonCodes.hpp)
+        Engine/ImGui/ImGuiBuild.cpp
+        Engine/Input.hpp
+        Engine/KeyCodes.hpp
+        Engine/MouseButtonCodes.hpp
+        Engine/Renderer/GraphicsContexts.hpp
+        Platform/OpenGL/OpenGLContext.cpp
+        Platform/OpenGL/OpenGLContext.hpp Platform/Macintosh/MacintoshInput.cpp Platform/Macintosh/MacintoshInput.hpp Engine/Renderer/Shader.hpp Engine/Renderer/Shader.cpp)
 
 
 target_include_directories(Engine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
         PRIVATE External/glfw/include External/imgui)
 #target_link_directories(Engine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../build/RelWithDebInfo/Engine/External/GLFW/src/)
 
-target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLFW_LIBRARIES} glfw glad imgui)
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLFW_LIBRARIES} glfw glad imgui glm)

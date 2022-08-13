@@ -2,8 +2,8 @@
 // Created by 김원진 on 2022/08/06.
 //
 
-#ifndef ENGINE_ENGINE_ENGINE_WINDOW_H_
-#define ENGINE_ENGINE_ENGINE_WINDOW_H_
+#ifndef ENGINE_ENGINE_ENGINE_WINDOW_HPP_
+#define ENGINE_ENGINE_ENGINE_WINDOW_HPP_
 
 #include <string>
 #include "Events/Event.hpp"
@@ -46,4 +46,4 @@ namespace Engine
 	};
 }
 
-#endif //ENGINE_ENGINE_ENGINE_WINDOW_H_
+#endif //ENGINE_ENGINE_ENGINE_WINDOW_HPP_

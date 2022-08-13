@@ -1,8 +1,8 @@
 #ifndef ENGINE_ENGINE_ENGINE_EVENTS_APPLICATIONEVENT_H_
 #define ENGINE_ENGINE_ENGINE_EVENTS_APPLICATIONEVENT_H_
 
-#include <sstream>
 #include "Event.hpp"
+#include <sstream>
 
 namespace Engine
 {
