@@ -42,6 +42,7 @@ namespace Engine
 
 		static IWindow* Create(const WindowProps& prop = WindowProps());
 
+		virtual void* GetNativeWindow() const = 0;
 	};
 }
 

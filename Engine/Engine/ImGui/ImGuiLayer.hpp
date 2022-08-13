@@ -2,6 +2,7 @@
 #define ENGINE_ENGINE_ENGINE_IMGUI_IMGUILAYER_H_
 
 #include "../Layer.hpp"
+
 #include <GLFW/glfw3.h>
 
 namespace Engine
@@ -13,11 +14,12 @@ namespace Engine
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(IEvent& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
 
+		void Begin();
+		void End();
 	 private:
 		float m_Time = 0.0f;
 

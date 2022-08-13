@@ -3,9 +3,11 @@
 
 #include "Events/Event.hpp"
 #include "Events/ApplicationEvent.hpp"
-
 #include "LayerStack.hpp"
+
 #include "Window.h"
+
+#include "ImGui/ImGuiLayer.hpp"
 
 namespace Engine
 {
@@ -27,6 +29,7 @@ namespace Engine
 		{
 			return *m_Window;
 		}
+
 		inline static Application& Get()
 		{
 			return *s_Instance;
@@ -35,8 +38,11 @@ namespace Engine
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<IWindow> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 	 private:
 		static Application* s_Instance;
 	};

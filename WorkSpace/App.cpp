@@ -26,7 +26,7 @@ class WorkSpace : public Engine::Application
 	WorkSpace()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Engine::ImGuiLayer());
+//		PushOverlay(new Engine::ImGuiLayer());
 	}
 	virtual ~WorkSpace()
 	{

@@ -1,5 +1,12 @@
 #find_package(spdlog REQUIRED)
-include_directories(External/spdlog/include Engine/Events External/imgui External/glfw/include Engine/ImGui Platform Platform/OpenGL)
+include_directories(
+        External/spdlog/include
+        Engine/Events
+        Engine/ImGui
+        External/imgui
+        External/glfw/include
+        Platform
+        Platform/OpenGL)
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
 
@@ -67,7 +74,7 @@ add_library(Engine STATIC
         Platform/OpenGL/imgui_impl_opengl3.cpp
         Platform/OpenGL/imgui_impl_opengl3.h
 
-        )
+        Engine/ImGui/ImGuiBuild.cpp Engine/Input.hpp Engine/KeyCodes.hpp Engine/MouseButtonCodes.hpp)
 
 
 target_include_directories(Engine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}

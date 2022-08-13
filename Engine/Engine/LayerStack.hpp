@@ -15,7 +15,6 @@ namespace Engine
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
-
 		void PopLayer(Layer* layer);
 		void PopOverlay(Layer* overlay);
 
@@ -30,7 +29,7 @@ namespace Engine
 
 	 private:
 		v_Layer m_Layers;
-		v_Layer::iterator m_LayerInsert;
+		unsigned int m_LayerInsertIndex = 0;
 
 	};
 

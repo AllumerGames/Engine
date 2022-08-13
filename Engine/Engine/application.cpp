@@ -6,6 +6,7 @@
 namespace Engine
 {
 	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
 		ENGINE_CORE_ASSERT(!s_Instance, "Application already exists!");
@@ -15,6 +16,10 @@ namespace Engine
 		m_Window->SetEventCallback(
 			std::bind(&Application::OnEvent, this, std::placeholders::_1)
 		);
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
+
 	}
 
 	Application::~Application()
@@ -62,6 +67,14 @@ namespace Engine
 			{
 				layer->OnUpdate();
 			}
+
+			m_ImGuiLayer->Begin();
+			for(Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
+
 			m_Window->OnUpdate();
 		}
 	}
